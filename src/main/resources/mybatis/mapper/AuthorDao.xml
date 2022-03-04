@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scartoon.starcartoon.dao.AuthorDao">
+    <resultMap id="BaseResultMap" type="com.scartoon.starcartoon.pojo.entity.Author">
+        <id column="authorid" jdbcType="INTEGER" property="authorid"/>
+        <result column="authorname" jdbcType="VARCHAR" property="authorname"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="idcard" jdbcType="VARCHAR" property="idcard"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    authorid, authorname, `password`, idcard, address, phone_number
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from author
+        where authorid = #{authorid,jdbcType=INTEGER}
+    </select>
+    <!--查询所有用户 -->
+    <select id="selectAuthorAll" resultType="com.scartoon.starcartoon.pojo.entity.Author">
+        select
+        <include refid="Base_Column_List"/>
+        from author
+    </select>
+    <!--根据作者名称查询这个作者的基本信息-->
+    <select id="selectByAuthorName" resultType="com.scartoon.starcartoon.pojo.entity.Author">
+        select<include refid="Base_Column_List"/>from author where authorname=#{authorname}
+    </select>
+    <!--根据作者手机号查询这个作者的基本信息-->
+    <select id="selectByPhoneNumber" resultType="com.scartoon.starcartoon.pojo.entity.Author">
+        select<include refid="Base_Column_List"/>from author where phone_number=#{phoneNumber}
+    </select>
+    <!--根据作者身份证号查询这个作者的基本信息-->
+    <select id="selectByIdCard" resultType="com.scartoon.starcartoon.pojo.entity.Author">
+        select<include refid="Base_Column_List"/>from author where idcard=#{idcard}
+    </select>
+    <!--作者总量-->
+    <select id="selectAuthorSum" resultType="java.lang.Integer">
+      select count(*) from author
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from author
+    where authorid = #{authorid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" keyColumn="authorid" keyProperty="authorid"
+            parameterType="com.scartoon.starcartoon.pojo.entity.Author" useGeneratedKeys="true">
+    insert into author (authorname, `password`, idcard, 
+      address, phone_number)
+    values (#{authorname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" keyColumn="authorid" keyProperty="authorid"
+            parameterType="com.scartoon.starcartoon.pojo.entity.Author" useGeneratedKeys="true">
+        insert into author
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="authorname != null">
+                authorname,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="idcard != null">
+                idcard,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="phoneNumber != null">
+                phone_number,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="authorname != null">
+                #{authorname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.scartoon.starcartoon.pojo.entity.Author">
+        update author
+        <set>
+            <if test="authorname != null">
+                authorname = #{authorname,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null">
+                idcard = #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where authorid = #{authorid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.scartoon.starcartoon.pojo.entity.Author">
+    update author
+    set authorname = #{authorname,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR}
+    where authorid = #{authorid,jdbcType=INTEGER}
+  </update>
+</mapper>

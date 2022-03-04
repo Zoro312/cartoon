@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scartoon.starcartoon.dao.CartoonTypeDao">
+  <resultMap id="BaseResultMap" type="com.scartoon.starcartoon.pojo.entity.CartoonType">
+    <id column="typeid" jdbcType="INTEGER" property="typeid" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    typeid, category, title
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cartoon_type
+    where typeid = #{typeid,jdbcType=INTEGER}
+  </select>
+  <!--查询所有类型 -->
+  <select id="selectTypeAll" resultType="com.scartoon.starcartoon.pojo.entity.CartoonType">
+    select <include refid="Base_Column_List"/> from cartoon_type
+  </select>
+  <!--查看地区类型-->
+  <select id="selectTypeRegion" resultType="com.scartoon.starcartoon.pojo.entity.CartoonType">
+    select title from cartoon_type where category='地区'
+  </select>
+  <!--查看题材类型-->
+  <select id="selectTypeTitle" resultType="com.scartoon.starcartoon.pojo.entity.CartoonType">
+    select title from cartoon_type where category='题材'
+  </select>
+  <!--查看进度类型-->
+  <select id="selectTypeState" resultType="com.scartoon.starcartoon.pojo.entity.CartoonType">
+    select title from cartoon_type where category='进度'
+  </select>
+  <!--查看排序类型-->
+  <select id="selectTypeSort" resultType="com.scartoon.starcartoon.pojo.entity.CartoonType">
+    select title from cartoon_type where category='排序'
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cartoon_type
+    where typeid = #{typeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="typeid" keyProperty="typeid" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonType" useGeneratedKeys="true">
+    insert into cartoon_type (category, title)
+    values (#{category,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="typeid" keyProperty="typeid" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonType" useGeneratedKeys="true">
+    insert into cartoon_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="category != null">
+        category,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonType">
+    update cartoon_type
+    <set>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where typeid = #{typeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonType">
+    update cartoon_type
+    set category = #{category,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR}
+    where typeid = #{typeid,jdbcType=INTEGER}
+  </update>
+</mapper>

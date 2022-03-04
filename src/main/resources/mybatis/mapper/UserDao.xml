@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scartoon.starcartoon.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.scartoon.starcartoon.pojo.entity.User">
+        <id column="userid" jdbcType="INTEGER" property="userid" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+        <result column="limit" jdbcType="VARCHAR" property="limit" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    userid, username, `password`, phone_number, `limit`
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where userid = #{userid,jdbcType=INTEGER}
+    </select>
+    <!--查询所有用户 -->
+    <select id="selectUserAll" resultType="com.scartoon.starcartoon.pojo.entity.User">
+        select <include refid="Base_Column_List"/> from user
+    </select>
+    <!--根据真实名称查询用户信息-->
+    <select id="selectUserByRealName" resultType="com.scartoon.starcartoon.pojo.entity.User">
+        select
+        <include refid="Base_Column_List"/>
+        from user where real=#
+    </select>
+    <!--根据用户名称查询这个用户的基本信息-->
+    <select id="selectByUserName" resultType="com.scartoon.starcartoon.pojo.entity.User">
+        select<include refid="Base_Column_List"/>from user where username=#{username}
+    </select>
+    <!--根据用户手机号查询这个用户的基本信息-->
+    <select id="selectByPhoneNumber" resultType="com.scartoon.starcartoon.pojo.entity.User">
+        select<include refid="Base_Column_List"/>from user where phone_number=#{phoneNumber}
+    </select>
+    <!--用户总量-->
+    <select id="selsectUserSum" resultType="java.lang.Integer">
+        select count(*) from user
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" keyColumn="userid" keyProperty="userid" parameterType="com.scartoon.starcartoon.pojo.entity.User" useGeneratedKeys="true">
+    insert into user (username, `password`, phone_number,
+      `limit`)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR},
+      #{limit,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" keyColumn="userid" keyProperty="userid" parameterType="com.scartoon.starcartoon.pojo.entity.User" useGeneratedKeys="true">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="limit != null">
+                `limit` = #{limit,jdbcType=VARCHAR},
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="limit != null">
+                #{limit,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.scartoon.starcartoon.pojo.entity.User">
+        update user
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phoneNumber != null">
+                phone_number = #{phoneNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="limit != null">
+                `limit` = #{limit,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where userid = #{userid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.scartoon.starcartoon.pojo.entity.User">
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      `limit` = #{limit,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

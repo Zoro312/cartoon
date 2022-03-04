@@ -1,0 +1,25 @@
+server:
+  port: 8080  #当前应用运行的端口
+spring:
+  datasource:    #数据源配置
+    type: com.alibaba.druid.pool.DruidDataSource   #链接池的类型
+    password: root    #数据库的密码
+    username: root   #数据库的账户
+    driver-class-name: com.mysql.cj.jdbc.Driver   #数据库的驱动程序类
+    url: jdbc:mysql://localhost:3306/scartoon_database?serverTimezone=GMT%2b8
+
+#mybatis的配置如下
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true  #数据库表中的下划线自动转换成驼峰
+  mapper-locations: classpath:mybatis/mapper/**/*.xml   #mapper文件的路径，这个路径下面的mapper.xml会被自动加载成mybatis映射文件
+
+#分页插件的配置
+pagehelper:
+  helper-dialect: mysql
+  #边界值的问题，处理页码的边界，比如：查询100页，但是数据库中没有此内容，还是可以查出来，是最后一页的内容，而不是报错
+  reasonable: true
+  support-methods-arguments: true
+  params:
+    count: countSql
+

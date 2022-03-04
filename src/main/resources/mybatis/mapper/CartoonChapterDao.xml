@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scartoon.starcartoon.dao.CartoonChapterDao">
+  <resultMap id="BaseResultMap" type="com.scartoon.starcartoon.pojo.entity.CartoonChapter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cartoonid" jdbcType="INTEGER" property="cartoonid" />
+    <result column="chapterid" jdbcType="INTEGER" property="chapterid" />
+    <result column="chapter_name" jdbcType="VARCHAR" property="chapterName" />
+    <result column="chapter_path" jdbcType="VARCHAR" property="chapterPath" />
+    <result column="limit" jdbcType="INTEGER" property="limit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cartoonid, chapterid, chapter_name, chapter_path, `limit`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cartoon_chapter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!--根据漫画id查询漫画章节信息-->
+  <select id="selectCartoonChapterById" resultType="com.scartoon.starcartoon.pojo.entity.CartoonChapter">
+    select
+    <include refid="Base_Column_List" />
+    from cartoon_chapter
+    where cartoonid = #{cartoonid,jdbcType=INTEGER}
+  </select>
+  <!--根据漫画和章节的id查询漫画章节信息-->
+  <select id="selectCartoonChapterByDoubleId" resultType="com.scartoon.starcartoon.pojo.entity.CartoonChapter">
+    select
+    <include refid="Base_Column_List" />
+    from cartoon_chapter
+    where cartoonid = #{cartoonid,jdbcType=INTEGER} and chapterid=#{chapterid,jdbcType=INTEGER}
+  </select>
+  <!--通过id得到已通过的漫画章节信息-->
+  <select id="selectPassedCartoonChapterById" resultType="com.scartoon.starcartoon.pojo.entity.CartoonChapter">
+    select
+    <include refid="Base_Column_List" />
+    from cartoon_chapter
+    where cartoonid = #{cartoonid,jdbcType=INTEGER} and `limit`=1
+  </select>
+  <!--根据漫画和章节的id查询是否存在-->
+  <select id="selectChapterById" resultType="com.scartoon.starcartoon.pojo.entity.CartoonChapter">
+    select
+    <include refid="Base_Column_List" />
+    from cartoon_chapter
+    where cartoonid = #{cartoonid,jdbcType=INTEGER} and chapterid=#{chapterid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cartoon_chapter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonChapter" useGeneratedKeys="true">
+    insert into cartoon_chapter (cartoonid, chapterid, chapter_name, 
+      chapter_path, `limit`)
+    values (#{cartoonid,jdbcType=INTEGER}, #{chapterid,jdbcType=INTEGER}, #{chapterName,jdbcType=VARCHAR}, 
+      #{chapterPath,jdbcType=VARCHAR}, #{limit,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonChapter" useGeneratedKeys="true">
+    insert into cartoon_chapter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cartoonid != null">
+        cartoonid,
+      </if>
+      <if test="chapterid != null">
+        chapterid,
+      </if>
+      <if test="chapterName != null">
+        chapter_name,
+      </if>
+      <if test="chapterPath != null">
+        chapter_path,
+      </if>
+      <if test="limit != null">
+        `limit`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cartoonid != null">
+        #{cartoonid,jdbcType=INTEGER},
+      </if>
+      <if test="chapterid != null">
+        #{chapterid,jdbcType=INTEGER},
+      </if>
+      <if test="chapterName != null">
+        #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterPath != null">
+        #{chapterPath,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null">
+        #{limit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonChapter">
+    update cartoon_chapter
+    <set>
+      <if test="cartoonid != null">
+        cartoonid = #{cartoonid,jdbcType=INTEGER},
+      </if>
+      <if test="chapterid != null">
+        chapterid = #{chapterid,jdbcType=INTEGER},
+      </if>
+      <if test="chapterName != null">
+        chapter_name = #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterPath != null">
+        chapter_path = #{chapterPath,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null">
+        `limit` = #{limit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonChapter">
+    update cartoon_chapter
+    set cartoonid = #{cartoonid,jdbcType=INTEGER},
+      chapterid = #{chapterid,jdbcType=INTEGER},
+      chapter_name = #{chapterName,jdbcType=VARCHAR},
+      chapter_path = #{chapterPath,jdbcType=VARCHAR},
+      `limit` = #{limit,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

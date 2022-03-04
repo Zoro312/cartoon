@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scartoon.starcartoon.dao.CommentLikeDao">
+    <resultMap id="BaseResultMap" type="com.scartoon.starcartoon.pojo.entity.CommentLike">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="userid" jdbcType="INTEGER" property="userid"/>
+        <result column="commentid" jdbcType="INTEGER" property="commentid"/>
+        <result column="timestamp" jdbcType="TIMESTAMP" property="timestamp"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, userid, commentid, `timestamp`
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from comment_like
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <!--通过用户查点赞信息-->
+    <select id="selectByUserId" resultType="com.scartoon.starcartoon.pojo.entity.CommentLike">
+        select
+        <include refid="Base_Column_List"/>
+        from comment_like
+        where userid = #{userid,jdbcType=INTEGER}
+    </select>
+    <!--根据id查询这个漫画点赞的基本信息-->
+    <select id="selectCommentLikeById" resultType="com.scartoon.starcartoon.pojo.entity.CommentLike">
+        select
+        <include refid="Base_Column_List"/>
+        from comment_like
+        where userid = #{userid,jdbcType=INTEGER} and commentid= #{commentid,jdbcType=INTEGER}
+    </select>
+    <!--删除信息-->
+    <delete id="delete">
+        delete from comment_like
+    where userid = #{userid,jdbcType=INTEGER} and commentid= #{commentid,jdbcType=INTEGER}
+    </delete>
+    <!--更新点赞数量-->
+    <update id="updateByCommentId">
+        UPDATE cartoon_comment SET likeSum = (SELECT COUNT(*) FROM comment_like WHERE commentid = #{commentid,jdbcType=INTEGER} ) WHERE id = #{commentid,jdbcType=INTEGER}
+    </update>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from comment_like
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.scartoon.starcartoon.pojo.entity.CommentLike"
+            useGeneratedKeys="true">
+    insert into comment_like (userid, commentid, `timestamp`
+      )
+    values (#{userid,jdbcType=INTEGER}, #{commentid,jdbcType=INTEGER}, #{timestamp,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.scartoon.starcartoon.pojo.entity.CommentLike" useGeneratedKeys="true">
+        insert into comment_like
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                userid,
+            </if>
+            <if test="commentid != null">
+                commentid,
+            </if>
+            <if test="timestamp != null">
+                `timestamp`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="commentid != null">
+                #{commentid,jdbcType=INTEGER},
+            </if>
+            <if test="timestamp != null">
+                #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.scartoon.starcartoon.pojo.entity.CommentLike">
+        update comment_like
+        <set>
+            <if test="userid != null">
+                userid = #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="commentid != null">
+                commentid = #{commentid,jdbcType=INTEGER},
+            </if>
+            <if test="timestamp != null">
+                `timestamp` = #{timestamp,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.scartoon.starcartoon.pojo.entity.CommentLike">
+    update comment_like
+    set userid = #{userid,jdbcType=INTEGER},
+      commentid = #{commentid,jdbcType=INTEGER},
+      `timestamp` = #{timestamp,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

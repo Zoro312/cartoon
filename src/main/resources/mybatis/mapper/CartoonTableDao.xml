@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scartoon.starcartoon.dao.CartoonTableDao">
+  <resultMap id="BaseResultMap" type="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    <id column="cartoonid" jdbcType="INTEGER" property="cartoonid" />
+    <result column="cartoonname" jdbcType="VARCHAR" property="cartoonname" />
+    <result column="region_type" jdbcType="VARCHAR" property="regionType" />
+    <result column="title_type" jdbcType="VARCHAR" property="titleType" />
+    <result column="cartoon_author" jdbcType="VARCHAR" property="cartoonAuthor" />
+    <result column="cartoon_desc" jdbcType="VARCHAR" property="cartoonDesc" />
+    <result column="imagepath" jdbcType="VARCHAR" property="imagepath" />
+    <result column="score" jdbcType="DOUBLE" property="score" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="limit" jdbcType="VARCHAR" property="limit" />
+    <result column="timestamp" jdbcType="TIMESTAMP" property="timestamp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cartoonid, cartoonname, region_type, title_type, cartoon_author, cartoon_desc, imagepath,
+    score, `state`, `limit`, `timestamp`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from cartoon_table
+    where cartoonid = #{cartoonid,jdbcType=INTEGER}
+  </select>
+  <!--查询所有漫画详情 -->
+  <select id="selectCartoonAll" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table
+  </select>
+  <!--通过作者查询漫画详情 -->
+  <select id="selectCartoonByAuthor" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table where cartoon_author=#{authorname}
+  </select>
+  <!--查询更新前6漫画详情 -->
+  <select id="selectCartoonUpdate" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table where `limit`='通过' order by cartoonid desc limit 6
+  </select>
+  <!--排行榜时间排行漫画详情 -->
+  <select id="selectCartoonUpdateAll" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table where `limit`='通过' order by cartoonid desc
+  </select>
+  <!--查询前十漫画详情 -->
+  <select id="selectCartoonTen" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table where `limit`='通过' order by score desc limit 10
+  </select>
+  <!--首页漫画排行榜的评分榜数据 -->
+  <select id="selectCartoonNotice" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table where `limit`='通过' order by score desc limit 5
+  </select>
+  <!--首页漫画排行榜的评论榜数据 -->
+  <select id="selectCartoonComment" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    SELECT COUNT(cartoon_comment.cartoonid) AS answertotal, cartoon_table.*
+    FROM cartoon_table
+    LEFT JOIN cartoon_comment ON cartoon_comment.cartoonid=cartoon_table.cartoonid
+    WHERE cartoon_table.limit='通过'
+    GROUP BY cartoon_table.cartoonid
+    ORDER BY answertotal DESC limit 5
+  </select>
+  <!--排行榜评论详情 -->
+  <select id="selectCartoonCommentAll" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    SELECT <include refid="Base_Column_List"/> FROM cartoon_table
+    WHERE cartoonid any (SELECT cartoonid FROM cartoon_comment GROUP BY cartoonid HAVING COUNT(*)>0) limit 10
+  </select>
+  <!--通过搜索得到漫画信息-->
+  <select id="selectCartoonByKey" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table where cartoonname like concat('%',#{keyW},'%')
+  </select>
+  <!--通过分类得到漫画信息-->
+  <select id="selectCartoonByTitle" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table where `limit`='通过' and region_type = #{cartoonRegion} and title_type like concat('%',#{cartoonTitle},'%')
+  </select>
+  <!--ceshi -->
+  <select id="selectCartoonByRe" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table where `limit`='通过' and region_type =#{cartoonRegion,jdbcType=VARCHAR}
+  </select>
+  <!--ceshi -->
+  <select id="selectCartoonByTi" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    select <include refid="Base_Column_List"/> from cartoon_table where `limit`='通过' and title_type like concat('%',#{cartoonTitle},'%')
+  </select>
+  <!--通过作者查询他上传漫画的总数-->
+  <select id="selectCartoonSumByAuthor" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM cartoon_table WHERE cartoon_author=#{authorname}
+  </select>
+  <!--通过作者查询他上传漫画通过的总数-->
+  <select id="selectPassCartoonSumByAuthor" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM cartoon_table WHERE cartoon_author=#{authorname} AND `limit`='通过'
+  </select>
+  <!--通过作者查询他上传漫画未通过的总数-->
+  <select id="selectNotPassCartoonSumByAuthor" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM cartoon_table WHERE cartoon_author=#{authorname} AND `limit`='未通过'
+  </select>
+  <!--漫画总量-->
+    <select id="selectCartoonSum" resultType="java.lang.Integer">
+      select count(*) from cartoon_table
+    </select>
+  <!--待审漫画总量-->
+  <select id="selectNotPassCartoonSum" resultType="java.lang.Integer">
+    select count(*) from cartoon_table where `limit`='未通过' OR cartoon_table.cartoonid = ANY (SELECT DISTINCT cartoonid FROM cartoon_chapter WHERE `limit`=0)
+  </select>
+  <!--国漫总数-->
+    <select id="selectGuoManSum" resultType="java.lang.Integer">
+      select count(*) from cartoon_table where region_type='国漫';
+    </select>
+  <!--日漫总数-->
+  <select id="selectRiManSum" resultType="java.lang.Integer">
+    select count(*) from cartoon_table where region_type='日漫';
+  </select>
+  <!--排行榜页面漫画-->
+    <select id="selectCartoonRankingAll" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+        <if test="ranking==''||rangking=='时间'">
+          select <include refid="Base_Column_List"/> from cartoon_table where `limit`='通过' order by cartoonid desc
+        </if>
+      <if test="ranking=='评论从多到少'">
+        SELECT COUNT(cartoon_comment.cartoonid) AS answertotal, cartoon_table.*
+        FROM cartoon_table
+        LEFT JOIN cartoon_comment ON cartoon_comment.cartoonid=cartoon_table.cartoonid
+        WHERE cartoon_table.limit='通过'
+        GROUP BY cartoon_table.cartoonid
+        ORDER BY answertotal DESC
+      </if>
+      <if test="ranking=='评分从高到低'">
+        select <include refid="Base_Column_List"/> from cartoon_table where `limit`='通过' order by score desc
+      </if>
+    </select>
+  <!--漫画管理中的漫画详情-->
+  <select id="selectCartoonByState" resultType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    <if test="state=='全部'">
+      select <include refid="Base_Column_List"/> from cartoon_table
+    </if>
+    <if test="state=='待审核'">
+      SELECT DISTINCT <include refid="Base_Column_List"/> FROM cartoon_table
+      WHERE `limit`='未通过' OR cartoon_table.cartoonid = ANY (SELECT DISTINCT cartoonid FROM cartoon_chapter WHERE `limit`=0)
+    </if>
+    <if test="state=='已通过'">
+      SELECT <include refid="Base_Column_List"/> FROM cartoon_table
+      WHERE NOT cartoon_table.cartoonid=ANY(SELECT DISTINCT cartoonid FROM cartoon_chapter WHERE `limit`=0)AND `limit`='通过'
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cartoon_table
+    where cartoonid = #{cartoonid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="cartoonid" keyProperty="cartoonid" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonTable" useGeneratedKeys="true">
+    insert into cartoon_table (cartoonname, region_type, title_type,
+      cartoon_author, cartoon_desc, imagepath,
+      score, `state`, `limit`,
+      `timestamp`)
+    values (#{cartoonname,jdbcType=VARCHAR}, #{regionType,jdbcType=VARCHAR}, #{titleType,jdbcType=VARCHAR},
+      #{cartoonAuthor,jdbcType=VARCHAR}, #{cartoonDesc,jdbcType=VARCHAR}, #{imagepath,jdbcType=VARCHAR},
+      #{score,jdbcType=DOUBLE}, #{state,jdbcType=VARCHAR}, #{limit,jdbcType=VARCHAR},
+      #{timestamp,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="cartoonid" keyProperty="cartoonid" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonTable" useGeneratedKeys="true">
+    insert into cartoon_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cartoonname != null">
+        cartoonname,
+      </if>
+      <if test="regionType != null">
+        region_type,
+      </if>
+      <if test="titleType != null">
+        title_type,
+      </if>
+      <if test="cartoonAuthor != null">
+        cartoon_author,
+      </if>
+      <if test="cartoonDesc != null">
+        cartoon_desc,
+      </if>
+      <if test="imagepath != null">
+        imagepath,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="limit != null">
+        `limit`,
+      </if>
+      <if test="timestamp != null">
+        `timestamp`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cartoonname != null">
+        #{cartoonname,jdbcType=VARCHAR},
+      </if>
+      <if test="regionType != null">
+        #{regionType,jdbcType=VARCHAR},
+      </if>
+      <if test="titleType != null">
+        #{titleType,jdbcType=VARCHAR},
+      </if>
+      <if test="cartoonAuthor != null">
+        #{cartoonAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="cartoonDesc != null">
+        #{cartoonDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="imagepath != null">
+        #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null">
+        #{limit,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    update cartoon_table
+    <set>
+      <if test="cartoonname != null">
+        cartoonname = #{cartoonname,jdbcType=VARCHAR},
+      </if>
+      <if test="regionType != null">
+        region_type = #{regionType,jdbcType=VARCHAR},
+      </if>
+      <if test="titleType != null">
+        title_type = #{titleType,jdbcType=VARCHAR},
+      </if>
+      <if test="cartoonAuthor != null">
+        cartoon_author = #{cartoonAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="cartoonDesc != null">
+        cartoon_desc = #{cartoonDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="imagepath != null">
+        imagepath = #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null">
+        `limit` = #{limit,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null">
+        `timestamp` = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where cartoonid = #{cartoonid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scartoon.starcartoon.pojo.entity.CartoonTable">
+    update cartoon_table
+    set cartoonname = #{cartoonname,jdbcType=VARCHAR},
+      region_type = #{regionType,jdbcType=VARCHAR},
+      title_type = #{titleType,jdbcType=VARCHAR},
+      cartoon_author = #{cartoonAuthor,jdbcType=VARCHAR},
+      cartoon_desc = #{cartoonDesc,jdbcType=VARCHAR},
+      imagepath = #{imagepath,jdbcType=VARCHAR},
+      score = #{score,jdbcType=DOUBLE},
+      `state` = #{state,jdbcType=VARCHAR},
+      `limit` = #{limit,jdbcType=VARCHAR},
+      `timestamp` = #{timestamp,jdbcType=TIMESTAMP}
+    where cartoonid = #{cartoonid,jdbcType=INTEGER}
+  </update>
+</mapper>
