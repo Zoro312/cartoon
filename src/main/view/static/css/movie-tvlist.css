@@ -1,0 +1,2228 @@
+﻿body {
+	background: #f1f2f3
+}
+.g-head-full {
+	box-shadow: 0px 2px 4px #ccc;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left .m-stage-photo {
+	width: 100%;
+	height: auto;
+	margin: 70px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul {
+	width: 100%;
+	height: auto;
+	margin: 25px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li {
+	width: 200px;
+	height: 190px;
+	float: left;
+	margin: 0 0 0 15px;
+	display: inline;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a {
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li a img {
+	width: 100%;
+	height: 150px;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a strong {
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	padding: 0 12px;
+	background: #eee;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li:nth-child(1) {
+	margin: 0
+}
+.g-movie-box .g-left .m-stage-photo ul li a:hover strong {
+	color: #ffae00;
+}
+.g-movie-box .g-left .m-comment {
+	margin: 49px 0 0;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(2) i {
+	background: #ff8400
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(3) i {
+	background: #ffbe00
+}
+.g-movie-box .g-right .m-hot-tv ul li a:hover {
+	color: #ffae00
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 {
+	float: right;
+	margin-top: 15px;
+	display: inline;
+	overflow: hidden
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 a {
+	margin-top: 0;
+	transition: background 0ms ease 0s;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 .bds_count {
+	font-size: 12px;
+	width: 44px;
+	font-weight: normal;
+	transition: background 0ms ease 0s;
+	overflow: hidden
+}
+.g-list-class {
+	padding: 8px 0 20px;
+	box-shadow: 0px 0px 5px #ccc;
+	background: #fff;
+	margin-top: 20px;
+}
+.g-list-class dl {
+	height: auto;
+	margin: 0 20px 0;
+	overflow: hidden;
+}
+.g-list-class dl dt {
+	width: 50px;
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #aaa;
+	float: left;
+	margin: 7px 0 0 0;
+	display: inline;
+	overflow: hidden
+}
+.g-list-class dl dd {
+	width: 1110px;
+	height: auto;
+	float: left;
+	margin: 0;
+	display: inline;
+	overflow: hidden
+}
+.g-list-class dl dd a {
+	width: auto;
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	padding: 0 12px;
+	float: left;
+	margin: 7px 10px 0 0;
+	border-radius: 22px;
+	display: inline;
+	overflow: hidden
+}
+.g-list-class dl dd a:hover {
+	background: #ffbe00;
+	color: #fff;
+}
+.g-list-class dl dd .f-hover {
+	width: auto;
+	height: 28px;
+	line-height: 28px;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 0 12px;
+	float: left;
+	margin: 7px 10px 0 0;
+	border-radius: 22px;
+	display: inline;
+	overflow: hidden;
+	background: #ffbe00;
+	color: #fff;
+}
+.fenleinone {
+	display: none
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left .m-stage-photo {
+	width: 100%;
+	height: auto;
+	margin: 70px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul {
+	width: 100%;
+	height: auto;
+	margin: 25px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li {
+	width: 200px;
+	height: 190px;
+	float: left;
+	margin: 0 0 0 15px;
+	display: inline;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a {
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li a img {
+	width: 100%;
+	height: 150px;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a strong {
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	padding: 0 12px;
+	background: #eee;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li:nth-child(1) {
+	margin: 0
+}
+.g-movie-box .g-left .m-stage-photo ul li a:hover strong {
+	color: #ffae00;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left .m-stage-photo {
+	width: 100%;
+	height: auto;
+	margin: 70px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul {
+	width: 100%;
+	height: auto;
+	margin: 25px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li {
+	width: 200px;
+	height: 190px;
+	float: left;
+	margin: 0 0 0 15px;
+	display: inline;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a {
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li a img {
+	width: 100%;
+	height: 150px;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a strong {
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	padding: 0 12px;
+	background: #eee;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li:nth-child(1) {
+	margin: 0
+}
+.g-movie-box .g-left .m-stage-photo ul li a:hover strong {
+	color: #ffae00;
+}
+.g-movie-box .g-left .m-comment {
+	margin: 49px 0 0;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(2) i {
+	background: #ff8400
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(3) i {
+	background: #ffbe00
+}
+.g-movie-box .g-right .m-hot-tv ul li a:hover {
+	color: #ffae00
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 {
+	float: right;
+	margin-top: 15px;
+	display: inline;
+	overflow: hidden
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 a {
+	margin-top: 0;
+	transition: background 0ms ease 0s;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 .bds_count {
+	font-size: 12px;
+	width: 44px;
+	font-weight: normal;
+	transition: background 0ms ease 0s;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-comment {
+	margin: 49px 0 0;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(2) i {
+	background: #ff8400
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(3) i {
+	background: #ffbe00
+}
+.g-movie-box .g-right .m-hot-tv ul li a:hover {
+	color: #ffae00
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 {
+	float: right;
+	margin-top: 15px;
+	display: inline;
+	overflow: hidden
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 a {
+	margin-top: 0;
+	transition: background 0ms ease 0s;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 .bds_count {
+	font-size: 12px;
+	width: 44px;
+	font-weight: normal;
+	transition: background 0ms ease 0s;
+	overflow: hidden
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left .m-stage-photo {
+	width: 100%;
+	height: auto;
+	margin: 70px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul {
+	width: 100%;
+	height: auto;
+	margin: 25px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li {
+	width: 200px;
+	height: 190px;
+	float: left;
+	margin: 0 0 0 15px;
+	display: inline;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a {
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li a img {
+	width: 100%;
+	height: 150px;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a strong {
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	padding: 0 12px;
+	background: #eee;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li:nth-child(1) {
+	margin: 0
+}
+.g-movie-box .g-left .m-stage-photo ul li a:hover strong {
+	color: #ffae00;
+}
+.g-movie-box .g-left .m-comment {
+	margin: 49px 0 0;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(2) i {
+	background: #ff8400
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(3) i {
+	background: #ffbe00
+}
+.g-movie-box .g-right .m-hot-tv ul li a:hover {
+	color: #ffae00
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 {
+	float: right;
+	margin-top: 15px;
+	display: inline;
+	overflow: hidden
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 a {
+	margin-top: 0;
+	transition: background 0ms ease 0s;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 .bds_count {
+	font-size: 12px;
+	width: 44px;
+	font-weight: normal;
+	transition: background 0ms ease 0s;
+	overflow: hidden
+}
+.g-list-cont {
+	box-shadow: 0px 0px 5px #ccc;
+	background: #fff;
+	margin-top: 20px;
+}
+.g-list-cont .m-list-paixu {
+	margin: 0 20px;
+	border-bottom: 1px solid #eee;
+	padding: 24px 0 16px;
+	display: block;
+	overflow: hidden
+}
+.g-list-cont .m-list-paixu dt {
+	height: 16px;
+	line-height: 16px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #aaa;
+	float: left;
+	display: inline;
+	overflow: hidden
+}
+.g-list-cont .m-list-paixu dd {
+	height: 16px;
+	float: left;
+	display: inline;
+	overflow: hidden
+}
+.g-list-cont .m-list-paixu dd a {
+	height: 16px;
+	line-height: 16px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	display: inline;
+	overflow: hidden
+}
+.g-list-cont .m-list-paixu dd a:hover {
+	color: #ffae00;
+}
+.g-list-cont .m-list-paixu dd a:hover span {
+	display: block;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left .m-stage-photo {
+	width: 100%;
+	height: auto;
+	margin: 70px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul {
+	width: 100%;
+	height: auto;
+	margin: 25px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li {
+	width: 200px;
+	height: 190px;
+	float: left;
+	margin: 0 0 0 15px;
+	display: inline;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a {
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li a img {
+	width: 100%;
+	height: 150px;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a strong {
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	padding: 0 12px;
+	background: #eee;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li:nth-child(1) {
+	margin: 0
+}
+.g-movie-box .g-left .m-stage-photo ul li a:hover strong {
+	color: #ffae00;
+}
+.g-movie-box .g-left .m-comment {
+	margin: 49px 0 0;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(2) i {
+	background: #ff8400
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(3) i {
+	background: #ffbe00
+}
+.g-movie-box .g-right .m-hot-tv ul li a:hover {
+	color: #ffae00
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 {
+	float: right;
+	margin-top: 15px;
+	display: inline;
+	overflow: hidden
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 a {
+	margin-top: 0;
+	transition: background 0ms ease 0s;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 .bds_count {
+	font-size: 12px;
+	width: 44px;
+	font-weight: normal;
+	transition: background 0ms ease 0s;
+	overflow: hidden
+}
+.g-list-cont .m-list-show {
+	width: 100%;
+	height: auto;
+	padding: 0 0 20px 0;
+	display: block;
+	overflow: hidden;
+}
+.g-list-cont .m-list-show a {
+	width: 200px;
+	height: auto;
+	float: left;
+	margin: 24px 20px 0 20px;
+	display: inline;
+	overflow: hidden;
+	position: relative;
+	zoom: 1
+}
+.g-list-cont .m-list-show a .img {
+	width: 100%;
+	height: 131px;
+	display: block;
+	overflow: hidden
+}
+.g-list-cont .m-list-show a .img img {
+	width: 100%;
+	min-height: 131px
+}
+.g-list-cont .m-list-show a strong {
+	width: 100%;
+	height: 16px;
+	line-height: 16px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	margin: 12px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-list-cont .m-list-show a p {
+	width: 100%;
+	height: 14px;
+	line-height: 14px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #aaa;
+	margin: 6px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-list-cont .m-list-show a i {
+	width: 40px;
+	height: 24px;
+	line-height: 24px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #fff;
+	font-style: normal;
+	text-align: center;
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: #e84440
+}
+.g-list-cont .m-list-show a:hover strong {
+	color: #ffae00
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left .m-stage-photo {
+	width: 100%;
+	height: auto;
+	margin: 70px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul {
+	width: 100%;
+	height: auto;
+	margin: 25px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li {
+	width: 200px;
+	height: 190px;
+	float: left;
+	margin: 0 0 0 15px;
+	display: inline;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a {
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li a img {
+	width: 100%;
+	height: 150px;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a strong {
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	padding: 0 12px;
+	background: #eee;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li:nth-child(1) {
+	margin: 0
+}
+.g-movie-box .g-left .m-stage-photo ul li a:hover strong {
+	color: #ffae00;
+}
+.g-movie-box .g-left .m-comment {
+	margin: 49px 0 0;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(2) i {
+	background: #ff8400
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(3) i {
+	background: #ffbe00
+}
+.g-movie-box .g-right .m-hot-tv ul li a:hover {
+	color: #ffae00
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 {
+	float: right;
+	margin-top: 15px;
+	display: inline;
+	overflow: hidden
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 a {
+	margin-top: 0;
+	transition: background 0ms ease 0s;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 .bds_count {
+	font-size: 12px;
+	width: 44px;
+	font-weight: normal;
+	transition: background 0ms ease 0s;
+	overflow: hidden
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left .m-stage-photo {
+	width: 100%;
+	height: auto;
+	margin: 70px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul {
+	width: 100%;
+	height: auto;
+	margin: 25px 0 0;
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li {
+	width: 200px;
+	height: 190px;
+	float: left;
+	margin: 0 0 0 15px;
+	display: inline;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a {
+	display: block;
+	overflow: hidden
+}
+.g-movie-box .g-left .m-stage-photo ul li a img {
+	width: 100%;
+	height: 150px;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li a strong {
+	width: auto;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	padding: 0 12px;
+	background: #eee;
+	display: block;
+	overflow: hidden;
+}
+.g-movie-box .g-left .m-stage-photo ul li:nth-child(1) {
+	margin: 0
+}
+.g-movie-box .g-left .m-stage-photo ul li a:hover strong {
+	color: #ffae00;
+}
+.g-movie-box .g-left .m-comment {
+	margin: 49px 0 0;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(2) i {
+	background: #ff8400
+}
+.g-movie-box .g-right .m-hot-tv ul li:nth-child(3) i {
+	background: #ffbe00
+}
+.g-movie-box .g-right .m-hot-tv ul li a:hover {
+	color: #ffae00
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-head ul li a:hover {
+	color: #ffae00
+}
+.g-head ul .f-hover a {
+	padding: 8px 12px;
+	background: #ffbe00;
+	color: #fff;
+	border-radius: 5px;
+}
+.g-head ul .f-hover a:hover {
+	color: #fff;
+}
+.g-head form {
+	width: 356px;
+	height: 36px;
+	border: 2px solid #ffae00;
+	margin: 22px 0 0;
+	overflow: hidden;
+	outline: none;
+	position: relative;
+}
+.g-head form select {
+	outline: none;
+	position: absolute;
+	padding-left: 3px;
+	height: 36px;
+	border: none;
+	border-right: 2px solid #ffae00;
+}
+.g-head form #searchType {
+	width: 278px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #333;
+	text-indent: 38px;
+	float: left;
+	background: #fff;
+	border: 0;
+	background: url(../images/jqg-index-icon.png) no-repeat 10px 10px;
+	display: inline;
+	overflow: hidden;
+	outline: none;
+}
+.g-head form .m_ssbtn {
+	width: 78px;
+	height: 36px;
+	line-height: 36px;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	text-align: center;
+	background: #ffae00;
+	float: left;
+	display: inline;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+/* 演示站CSS已经打乱 */
+.g-foot {
+	padding: 23px 0;
+	background: #333;
+	margin: 34px 0 0;
+	text-align: center;
+	display: block;
+	overflow: hidden
+}
+.g-foot p {
+	margin: 10px 0 0;
+	color: #999;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	overflow: hidden;
+}
+.g-foot p a {
+	color: #999;
+	padding: 0 10px;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 {
+	float: right;
+	margin-top: 15px;
+	display: inline;
+	overflow: hidden
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 a {
+	margin-top: 0;
+	transition: background 0ms ease 0s;
+}
+.g-movie-box .g-left h1 .bdshare-button-style1-24 .bds_count {
+	font-size: 12px;
+	width: 44px;
+	font-weight: normal;
+	transition: background 0ms ease 0s;
+	overflow: hidden
+}
+/*网分页样式*/
+.page-list {
+	clear: both;
+	margin: 20px auto 30px auto;
+	padding-top: 10px;
+	overflow: hidden;
+	text-align: center;
+	font-size: 14px;
+}
+.page-list ul table {
+	margin: 0 auto;
+	text-align: center
+}
+.page-list ul li {
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 6px 15px;
+	margin: 0 1px;
+	line-height: 24px;
+	background: #fff;
+	color: #999;
+	border-radius: 2px
+}
+.page-list ul li:hover {
+	background: #ffbe00;
+	color: #fff;
+	border: 1px solid #ffbe00
+}
+.page-list ul li:hover a {
+	color: #fff;
+}
+.page-list ul li.thisclass {
+	display: inline-block;
+	border: 1px solid #ffbe00;
+	padding: 6px 15px;
+	margin: 0 1px;
+	background: #ffbe00;
+	color: #fff;
+}
+.page-list ul li.thisclass a {
+	color: #fff;
+}
+.page-list ul li a {
+	display: block;
+	color: #999
+}
+.page-list ul li a:hover {
+	color: #fff;
+}
