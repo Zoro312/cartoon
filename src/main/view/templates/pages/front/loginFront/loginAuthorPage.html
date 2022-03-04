@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>作者登录</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/iconfont.css}">
+    <link rel="stylesheet" th:href="@{/css/reg.css}">
+</head>
+<body>
+<div class="wrap">
+    <div class="wpn">
+        <form class="layui-form" th:action="@{/pages/front/loginAuthor}" method="post">
+            <div class="form-data pos">
+                <div class="change-login">
+                    <p class="account_number on" style="font-size: 20px; font-weight: bold;">作者登录</p>
+                </div>
+                <p class="p-input pos">
+                    <input type="text" name="authorname" placeholder="用户名称"/>
+                </p>
+                <p class="p-input pos">
+                    <input type="password" name="password" placeholder="登录密码"/>
+                </p>
+                <div class="layui-form-item">
+                    <div style="text-align: center">
+                        <div th:text="${errorMsg}" style="color: blue;font-size: 18px"></div>
+                    </div>
+                </div>
+                <div class="r-forget cl">
+                    <a th:href="@{/pages/front/registerAuthor}" class="z">账号注册</a>
+                </div>
+                <button type="submit" class="lang-btn off log-btn">登录</button>
+                <p class="right">Copyright © 2021 星漫画网站 版权所有</p>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

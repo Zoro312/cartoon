@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>星漫画</title>
+
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/font/iconfont.css}">
+
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script th:src="@{/js/sliderbox.js}"></script>
+    <script th:src="@{/js/tab.js}"></script>
+</head>
+<body>
+
+<!---------- 顶部页面 ---------->
+<div id="header">
+
+    <!-- 最顶端部分 -->
+    <div class="header-top">
+        <div class="auto-width">
+
+            <h1 class="logo fl"><a th:href="@{/}"><img src="/images/index/logo.png" width="160px" height="38px"></a></h1>
+
+            <div class="search-box fl">
+                <form action="/findByKey" method="post">
+                    <input type="text" name="keyWord" class="fl search-text" placeholder="请输入作品名称">
+                    <button class="fl search-btn">
+                        <i type="submit" class="iconfont icon-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <ul class="header-guide fr">
+                <div class="guide-item login" th:if="${session.username == null}">
+                    <li class="guide-item login">
+                        <a th:href="@{/pages/front/loginUserPage}">登录</a>
+                    </li>
+                    <li class="guide-item login">
+                        <a th:href="@{/pages/front/registerUserPage}">注册</a>
+                    </li>
+                    <li class="guide-item login" th:if="${session.username == null}">
+                        <a>未登录</a>
+                    </li>
+
+                </div>
+                <div class="guide-item login" th:if="${session.username != null}">
+                    <li class="guide-item login">
+                        <a class="guide-item login" th:text="${session.username.username}"></a>
+                    </li>
+                    <li class="guide-item login">
+                        <a class="guide-item login" th:href="@{/logout}">注销</a>
+                    </li>
+                </div>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- 焦点图 -->
+    <div class="header-banner">
+        <a href="#" class="bg"><img class="bg" src="/images/index/title.jpg"></a>
+        <span class="text">欢迎来到星漫画网站</span>
+    </div>
+
+    <!-- 导航 -->
+    <div class="header-nav">
+        <div class="nav-wrap auto-width clearfix">
+            <a th:href="@{/}" class="nav-item nav-cur">首页</a>
+            <a th:href="@{/pages/front/classify}" class="nav-item">分类</a>
+            <a th:href="@{/pages/front/ranking(ranking='')}" class="nav-item"><i class="iconfont icon-rank"></i>排行榜</a>
+            <a th:href="@{/pages/front/loginAuthor}" class="nav-item nav-item_hover">作者中心</a>
+            <a th:href="@{/pages/front/comment}" class="nav-item">漫评</a>
+        </div>
+    </div>
+</div>
+
+<!---------- 主体内容 ---------->
+<div id="main">
+    <div class="auto-width clearfix">
+
+
+        <section class="area clearfix area-slider">
+            <!-- 幻灯片部分 -->
+            <div id="sliderBox" class="slider-box fl">
+                <ul class="slider">
+                    <li data-title="Picture 1" class="slider-item"><img src="/images/index/slider-1.jpg" width="450"
+                                                                        height="260" alt="#"></li>
+                    <li data-title="Picture 2" class="slider-item"><img src="/images/index/slider-2.jpg" width="450"
+                                                                        height="260" alt="#"></li>
+                    <li data-title="Picture 3" class="slider-item"><img src="/images/index/slider-3.jpg" width="450"
+                                                                        height="260" alt="#"></li>
+                    <li data-title="Picture 4" class="slider-item"><img src="/images/index/slider-4.jpg" width="450"
+                                                                        height="260" alt="#"></li>
+                    <li data-title="Picture 5" class="slider-item"><img src="/images/index/slider-5.jpg" width="450" height="260" alt="#"></li>
+                </ul>
+                <div class="btn-box">
+                    <a href="javascript:;" class="btn-item btn-item__active"></a>
+                    <a href="javascript:;" class="btn-item"></a>
+                    <a href="javascript:;" class="btn-item"></a>
+                    <a href="javascript:;" class="btn-item"></a>
+                    <a href="javascript:;" class="btn-item"></a>
+                </div>
+            </div>
+
+            <!-- 轮播图右侧漫画信息 -->
+            <ul class="slider-menu fl">
+                <li class="slider-menu__item" th:each="u : ${update}">
+                    <a th:href="@{/cartoonDetails(id=${u.cartoonid})}" class="item">
+                        <img th:src="${u.imagepath}" style="object-fit: cover" alt="#">
+                        <div class="mask-gradient">
+                            <p th:text="${u.cartoonname}"></p>
+                            <div class="text-box">
+                                <em th:text="作者：+${u.cartoonAuthor}"></em>
+                                <span class="info">
+                                    <i class="iconfont icon-collect" th:text="${u.score}"></i>
+                                    <i class="iconfont icon-collect" th:text="${u.state}"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 评分榜 -->
+        <section class="area clearfix area-banana">
+            <div class="area-cont">
+                <div class="area-main fl" JS-tab="true">
+                    <header class="area-header">
+                        <h2 class="title">
+                            <img src="/images/index/score.jpg" alt="#">
+                            <b>评分榜</b>
+                        </h2>
+                    </header>
+                    <ul class="area-menu fl clearfix tab-cont tab-cont__active">
+                        <li class="area-menu__item" th:each="c : ${list}">
+                            <a th:href="@{/cartoonDetails(id=${c.cartoonid})}" class="img">
+                                <img th:src="${c.imagepath}" style="object-fit: cover" alt="#">
+                                <span class="rank rank-color">
+                                        <i class="iconfont icon-rank" th:text="${c.score}"></i>
+                                    </span>
+                            </a>
+                            <div class="info">
+                                <a th:href="@{/cartoonDetails(id=${c.cartoonid})}" class="title"
+                                   th:text="${c.cartoonname}"></a>
+                                <p th:text="作者：+${c.cartoonAuthor}"></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 漫画排行榜 -->
+                <div class="area-side fr" JS-tab="true">
+                    <header class="area-header">
+                        <h2 class="title">
+                            <b>漫画排行榜</b>
+                        </h2>
+                        <div class="tab-rank tab fr">
+                            <a href="javascript:;" class="tab-rank__item active">评分榜</a>
+                            <a href="javascript:;" class="tab-rank__item">评论榜</a>
+                        </div>
+                    </header>
+                    <div class="side-rank">
+                        <!-- 评分榜 -->
+                        <ul class="tab-cont tab-cont__active">
+                            <script type="text/javascript">
+                                var i = 1;
+                                var j = 1;
+                            </script>
+                            <li class="has-img" th:each="s:${score}">
+                                <a th:href="@{/cartoonDetails(id=${s.cartoonid})}" class="img fl">
+                                    <img th:src="${s.imagepath}" style="object-fit: cover" alt="#">
+                                    <script type="text/javascript">
+                                        document.write('<span class="rank">' + i + '</span>');
+                                        i++;
+                                    </script>
+                                </a>
+                                <div class="info fr">
+                                    <a th:href="@{/cartoonDetails(id=${s.cartoonid})}" class="text-overflow"
+                                       th:text="${s.cartoonname}"></a>
+                                    <p th:text="作者：+${s.cartoonAuthor}"></p>
+                                    <p>
+                                        <i class="iconfont icon-collect fl" th:text="${s.score}"></i>
+                                        <i class="iconfont icon-play fr" th:text="${s.state}"></i>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- 评论榜 -->
+                        <ul class="tab-cont">
+                            <li class="has-img" th:each="a:${comment}">
+                                <a th:href="@{/cartoonDetails(id=${a.cartoonid})}" class="img fl">
+                                    <img th:src="${a.imagepath}" style="object-fit: cover" alt="#">
+                                    <script type="text/javascript">
+                                        document.write('<span class="rank">' + j + '</span>');
+                                        j++;
+                                    </script>
+                                </a>
+                                <div class="info fr">
+                                    <a th:href="@{/cartoonDetails(id=${a.cartoonid})}" class="text-overflow"
+                                       th:text="${a.cartoonname}"></a>
+                                    <p th:text="作者：+${a.cartoonAuthor}"></p>
+                                    <p>
+                                        <i class="iconfont icon-collect fl" th:text="${a.score}"></i>
+                                        <i class="iconfont icon-play fr" th:text="${a.state}"></i>
+
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a th:href="@{/pages/front/ranking(ranking='')}" class="more">查看完整榜单 ></a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<!---------- 底部内容 ---------->
+<div id="footer">
+    <div class="container auto-width">
+        <div class="footer-top clearfix">
+            <div class="footer-bottom">
+                Copyright &copy; 2021.星漫画网站
+                <div onclick="window.location='/pages/back/loginPage'">
+                    <a target="_blank">后台登录</a>
+                </div>
+                <p>本站不提供任何视听上传服务，所有内容均来自视频分享站点所提供的公开引用资源。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

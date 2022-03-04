@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>星漫画</title>
+
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/font/iconfont.css}">
+    <link th:href="@{/css/allcss.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/movie-tvlist.css}" rel="stylesheet" type="text/css">
+
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script th:src="@{/js/sliderbox.js}"></script>
+    <script th:src="@{/js/tab.js}"></script>
+</head>
+<body>
+
+<!---------- 顶部页面 ---------->
+<div id="header">
+
+    <!-- 最顶端部分 -->
+    <div class="header-top">
+        <div class="auto-width">
+
+            <h1 class="logo fl"><a th:href="@{/}"><img src="/images/index/logo.png" width="160px" height="38px" alt="#"></a></h1>
+
+            <div class="search-box fl">
+                <form action="/findByKey" method="post">
+                    <input type="text" name="keyWord" class="fl search-text" placeholder="请输入作品名称">
+                    <button class="fl search-btn">
+                        <i type="submit" class="iconfont icon-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <ul class="header-guide fr">
+                <div class="guide-item login" th:if="${session.username == null}">
+                    <li class="guide-item login">
+                        <a th:href="@{/pages/front/loginUserPage}">登录</a>
+                    </li>
+                    <li class="guide-item login">
+                        <a th:href="@{/pages/front/registerUserPage}">注册</a>
+                    </li>
+                    <li class="guide-item login" th:if="${session.username == null}">
+                        <a>未登录</a>
+                    </li>
+
+                </div>
+                <div class="guide-item login" th:if="${session.username != null}">
+                    <li class="guide-item login">
+                        <a class="guide-item login" th:text="${session.username.username}"></a>
+                    </li>
+                    <li class="guide-item login">
+                        <a class="guide-item login" th:href="@{/logout}">注销</a>
+                    </li>
+                </div>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- 焦点图 -->
+    <div class="header-banner">
+        <a href="#" class="bg"><img class="bg" src="/images/index/title.jpg"></a>
+        <span class="text">欢迎来到星漫画网站</span>
+    </div>
+
+    <!-- 导航 -->
+    <div class="header-nav">
+        <div class="nav-wrap auto-width clearfix">
+            <a th:href="@{/}" class="nav-item">首页</a>
+            <a th:href="@{/pages/front/classify}" class="nav-item">分类</a>
+            <a th:href="@{/pages/front/ranking(ranking='')}" class="nav-item nav-cur"><i class="iconfont icon-rank"></i>排行榜</a>
+            <a th:href="@{/pages/front/loginAuthor}" class="nav-item nav-item_hover">作者中心</a>
+            <a th:href="@{/pages/front/comment}" class="nav-item">漫评</a>
+        </div>
+    </div>
+</div>
+
+<!---------- 主体内容 ---------->
+<div id="main">
+    <div class="auto-width clearfix">
+
+        <div class="g-box-1200 g-list-class">
+            <dl>
+                <dt>排序：</dt>
+                <dd>
+                    <div th:each="r:${sort}">
+                        <a class="swiper-slide" th:text="${r.title}"
+                           th:href="@{/pages/front/ranking(ranking=${r.title})}"></a>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="g-box-1200 g-list-cont">
+            <dl class="m-list-paixu">
+                <dt>当前位置：</dt>
+                <dd><a th:href="@{/}">首页</a> > <a th:href="@{/pages/front/ranking(ranking='')}">排行榜</a> ><a th:text="${session.con}"></a></dd>
+            </dl>
+            <div class="m-list-show" >
+
+                <a th:each="a:${all.list}" th:href="@{/cartoonDetails(id=${a.cartoonid})}" >
+                    <strong style="text-align: center"><b th:text="${a.cartoonname}" ></b></strong>
+                    <div class="img">
+                        <img th:src="${a.imagepath}" alt="#">
+                    </div>
+                    <strong><b th:text="作者：+${a.cartoonAuthor}"></b></strong>
+                    <p th:text="简介：+${a.cartoonDesc}"></p>
+                </a>
+            </div>
+            <div class="page-list">
+                <ul>
+                    <li><a th:href="@{/pages/front/ranking(pageNum=1,ranking=${session.con})}">首页</a></li>
+                    <li th:if="${all.pageNum!=1}"><a th:href="@{/pages/front/ranking(pageNum=${all.pageNum}-1,ranking=${session.con})}">上一页</a></li>
+                    <li class="thisclass" th:text="${all.pageNum}"></li>
+                    <li th:if="${all.pageNum<all.pages}"><a th:href="@{/pages/front/ranking(pageNum=${all.pageNum}+1,ranking=${session.con})}">下一页</a></li>
+                    <li th:text="'共'+ ${all.pages} + '页'"></li>
+                    <li><a th:href="@{/pages/front/ranking(pageNum=${all.pages},ranking=${session.con})}">末页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------- 底部内容 ---------->
+<div id="footer">
+    <div class="container auto-width">
+        <div class="footer-top clearfix">
+            <div class="footer-bottom">
+                Copyright &copy; 2021.星漫画网站
+                <div onclick="window.location='/pages/back/loginPage'">
+                    <a target="_blank">后台登录</a>
+                </div>
+                <p>本站不提供任何视听上传服务，所有内容均来自视频分享站点所提供的公开引用资源。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

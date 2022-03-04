@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/style/admin.css}" media="all">
+    <script th:src="@{/layui/layui.js}" th:inline="javascript"></script>
+    <script th:src="@{/js/jquery-3.5.1.min.js}" type="text/javascript"></script>
+    <script>
+        layui.config({
+            base: '/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use('index');
+    </script>
+</head>
+<body>
+<div style="display: flex">
+    <div>
+        <form class="layui-form" action="" th:each="c:${session.cartoonTable}" style="padding-top: 10px">
+            <div class="layui-form-item" style="display: none">
+                <label class="layui-form-label">id</label>
+                <div class="layui-input-inline" style="width: 200px">
+                    <input type="hidden" name="cartoonid" class="layui-input" th:value="${c.cartoonid}" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">漫画名称</label>
+                <div class="layui-input-block" style="width: 300px">
+                    <input type="text" name="cartoonname" lay-verify="required"
+                           th:value="${c.cartoonname}" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">地区类型</label>
+                <div class="layui-input-block" style="width: 300px">
+                    <input type="text" name="regionType" lay-verify="required"
+                           th:value="${c.regionType}" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">题材类型</label>
+                <div class="layui-input-block" style="width: 300px">
+                    <input type="text" name="titleType" lay-verify="required"
+                           th:value="${c.titleType}" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">漫画简介</label>
+                <div class="layui-input-block" style="width: 300px">
+                    <textarea name="cartoonDesc"  class="layui-textarea" th:text="${c.cartoonDesc}"
+                              style="height: 200px"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">漫画作者</label>
+                <div class="layui-input-block" style="width: 300px">
+                    <input type="text" name="cartoonAuthor" lay-verify="required"
+                           th:value="${c.cartoonAuthor}" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">漫画评分</label>
+                <div class="layui-input-block" style="width: 300px">
+                    <input type="text" name="score" lay-verify="required|number"
+                           th:value="${c.score}" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item ">
+                <label class="layui-form-label">进度</label>
+                <div class="layui-input-block">
+                    <input type="text" name="state" lay-verify="required"
+                           th:value="${c.state}" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item ">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block">
+                    <input type="text" name="limit" lay-verify="required"
+                           th:value="${c.limit}" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">漫画封面</label>
+                <div class="layui-input-inline" style="width: 300px">
+                    <input type="file" id="pic" name="pic" onchange="changepic(this)" style="display: none">
+                    <div class="layui-col-md4" >
+                        <input type="hidden" name="imagepath" lay-verify="required"
+                               th:value="${c.imagepath}" class="layui-input">
+                        <img id="preview_img" name="imagepath"  th:src="${c.imagepath}" width="168" height="215" onclick="upload()">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item" style="text-align: center;">
+                <div class="layui-input-block">
+                    <button id="commit" class="layui-btn" lay-submit lay-filter="alter">确认修改</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script th:inline="javascript" type="text/javascript">
+
+    //上传图片
+    function upload() {
+        $('#pic').click();
+    }
+
+    //更改图片
+    function changepic() {
+        var reads = new FileReader();
+        f = document.getElementById('pic').files[0];
+        reads.readAsDataURL(f);
+        reads.onload = function (e) {
+            document.getElementById('preview_img').src = this.result;
+            $("#preview_img").css("display", "block");
+        };
+    }
+</script>
+<script th:inline="javascript">
+    $(function () {
+        layui.use(['form', 'layer'], function () {
+            const form = layui.form;
+            var layer = layui.layer;
+            form.render();
+            form.on('submit(alter)', function (data) {
+                let formData = new FormData(data.form);
+                $.ajax({
+                    url: '/pages/back/cartoon/alterCartoonTable',
+                    contertType: false,
+                    data: formData,
+                    type: 'post',
+                    dataType: 'json',
+                    contentType: false,//这里
+                    processData: false,
+                    success: function (res) {
+                        if (res == 1) {
+                            layer.msg("修改成功");
+                        }
+                    },
+                    error: function () {
+                        layer.msg("修改失败");
+                    }
+                });
+                return false;
+            });
+        });
+    })
+</script>
+
+</body>
+</html>
+
+

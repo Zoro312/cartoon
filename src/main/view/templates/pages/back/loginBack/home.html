@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>后台主页</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" media="all">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/global.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" media="all">
+</head>
+<body>
+<section class="larry-wrapper">
+
+    <div class="row state-overview">
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="symbol userblue layui-anim layui-anim-rotate">
+                    <i class="layui-icon layui-icon-group" style="font-size: 50px; color: white;"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h1 id="count1" th:text="${userSum}"></h1>
+                    </a>
+                    <p>用户总量</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="symbol commred layui-anim layui-anim-rotate">
+                    <i class="layui-icon layui-icon-group" style="font-size: 50px; color: #555555;"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h1 id="count2" th:text="${authorSum}"></h1>
+                    </a>
+                    <p>作者总量</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="symbol articlegreen layui-anim layui-anim-rotate">
+                    <i class="layui-icon layui-icon-read" style="font-size: 50px; color: white;"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h1 id="count3" th:text="${cartoonSum}"></h1>
+                    </a>
+                    <p>漫画总数</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="symbol rsswet layui-anim layui-anim-rotate">
+                    <i class="layui-icon layui-icon-ok-circle" style="font-size: 50px; color: white;"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h1 id="count4" th:text="${notPassCartoonSum}"></h1>
+                    </a>
+                    <p>待审漫画总数</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- 漫画信息统计-->
+    <div class="row">
+        <div class="col-lg-6">
+            <section class="panel">
+                <header class="panel-heading bm0">
+                    <span class='span-title'>漫画信息统计</span>
+                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                </header>
+                <div class="panel-body laery-seo-box">
+                    <div class="larry-seo-stats" id="larry-seo-stats"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('larry-seo-stats'));
+    option = {
+        title : {
+            text: '漫画信息',
+            subtext: '地区类型',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['国漫','日漫']
+        },
+        series : [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+                    {value:'[[${guoManSum}]]', name:'国漫'},
+                    {value:'[[${riManSum}]]', name:'日漫'}
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>

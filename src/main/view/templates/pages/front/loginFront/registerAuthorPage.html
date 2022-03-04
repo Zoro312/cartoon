@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>作者注册</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/iconfont.css}">
+    <link rel="stylesheet" th:href="@{/css/reg.css}">
+</head>
+<body>
+<div class="wrap">
+    <div class="wpn">
+        <form class="layui-form" th:action="@{/pages/front/registerAuthor}" method="post">
+            <div class="form-data pos">
+                <div class="change-login">
+                    <p class="account_number on" style="font-size: 20px; font-weight: bold;">作者注册</p>
+                </div>
+                <p class="p-input pos">
+                    <input type="text" id="username" name="authorname" placeholder="作者名" autocomplete="off"/>
+                </p>
+                <p class="p-input pos" id="pwd">
+                    <input type="password" name="password" placeholder="密码" autocomplete="off"/>
+                </p>
+                <p class="p-input pos">
+                    <input type="text" name="idcard" placeholder="身份证号" autocomplete="off"/>
+                </p>
+                <p class="p-input pos">
+                    <input type="text" name="address" placeholder="地址" autocomplete="off"/>
+                </p>
+                <p class="p-input pos">
+                    <input type="text" name="phoneNumber" placeholder="手机号" autocomplete="off"/>
+                </p>
+                <div class="layui-form-item">
+                    <div style="text-align: center">
+                        <div th:text="${errorMsg}" style="color: blue;font-size: 18px"></div>
+                    </div>
+                </div>
+                <button type="submit" class="lang-btn">注册</button>
+                <div class="bottom-info">已有账号，<a th:href="@{/pages/front/loginAuthor}">马上登录</a></div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

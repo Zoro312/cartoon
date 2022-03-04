@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>星漫画</title>
+
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/font/iconfont.css}">
+    <link th:href="@{/css/allcss.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/movie-tvlist.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/comment.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/style/admin.css}" media="all">
+
+    <script th:src="@{/layui/layui.js}" th:inline="javascript"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script th:src="@{/js/sliderbox.js}"></script>
+    <script th:src="@{/js/tab.js}"></script>
+    <script>
+        layui.config({
+            base: '/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use('index');
+    </script>
+</head>
+<body>
+
+<!---------- 主体内容 ---------->
+<div id="main">
+    <div class="auto-width clearfix">
+        <div id="LAY_app">
+            <div class="layui-layout layui-layout-admin" th:each="n:${session.authorname}">
+                <!-- 头部区域 -->
+                <div class="layui-header">
+                    <!-- 左边头部区域 -->
+                    <ul class="layui-nav layui-layout-left">
+                        <!-- 侧边拉伸 -->
+                        <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                            <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                                <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                            </a>
+                        </li>
+                        <!-- 前台链接 -->
+                        <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                            <a href="http://localhost:8080/" target="_blank" title="前台">
+                                <i class="layui-icon layui-icon-website"></i>
+                            </a>
+                        </li>
+                        <!-- 刷新界面 -->
+                        <li class="layui-nav-item" lay-unselect>
+                            <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                                <i class="layui-icon layui-icon-refresh-3"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- 右边头部区域 -->
+                    <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+
+                        <!-- 全屏 -->
+                        <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                            <a href="javascript:;" layadmin-event="fullscreen">
+                                <i class="layui-icon layui-icon-screen-full"></i>
+                            </a>
+                        </li>
+                        <!-- 登录用户 -->
+                        <li class="layui-nav-item" lay-unselect>
+                            <a href="javascript:;">
+                                <cite th:text="${n.authorname}"></cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd><a th:lay-href="@{/pages/front/authorInfo(authorname=${n.authorname})}">基本资料</a></dd>
+                                <hr>
+                                <dd layadmin-event="logout" style="text-align: center;"><a th:href="@{/pages/front/authorLogout}">退出</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 侧边菜单 -->
+                <div class="layui-side layui-side-menu">
+                    <div class="layui-side-scroll">
+                        <!-- 菜单头部 -->
+                        <div class="layui-logo" th:lay-href="@{/pages/front/home(authorname=${n.authorname})}">
+                            <span>作者中心</span>
+                        </div>
+
+                        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+                            <li data-name="home" class="layui-nav-item layui-nav-itemed">
+                                <a href="javascript:;" lay-tips="主页" lay-direction="2">
+                                    <i class="layui-icon layui-icon-home"></i>
+                                    <cite>主页</cite>
+                                </a>
+                                <dl class="layui-nav-child">
+                                    <dd data-name="console" class="layui-this">
+                                        <a th:lay-href="@{/pages/front/home(authorname=${n.authorname})}">主页</a>
+                                    </dd>
+                                    <dd data-name="console">
+                                        <a th:lay-href="@{/pages/front/authorInfo(authorname=${n.authorname})}">修改资料</a>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <!-- 漫画管理 -->
+                            <li data-name="template" class="layui-nav-item">
+                                <a href="javascript:;" lay-tips="页面" lay-direction="2">
+                                    <i class="layui-icon layui-icon-template"></i>
+                                    <cite>漫画管理</cite>
+                                </a>
+                                <dl class="layui-nav-child">
+                                    <dd>
+                                        <a th:lay-href="@{/pages/front/addCartoon}">上传漫画</a>
+                                    </dd>
+                                    <dd>
+                                        <a th:lay-href="@{/pages/front/cartoonList(authorname=${n.authorname})}">已上传漫画</a>
+                                    </dd>
+                                </dl>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 页面标签 -->
+                <div class="layadmin-pagetabs" id="LAY_app_tabs">
+                    <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+                    <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+                    <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                        <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                            <li class="layui-nav-item" lay-unselect>
+                                <a href="javascript:;"></a>
+                                <dl class="layui-nav-child layui-anim-fadein">
+                                    <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                                    <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                                    <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+                        <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                            <li lay-id="" th:lay-attr="@{/pages/front/home(authorname=${n.authorname})}" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <!-- 主体内容 -->
+                <div class="layui-body" id="LAY_app_body">
+                    <div class="layadmin-tabsbody-item layui-show">
+                        <iframe th:src="@{/pages/front/home(authorname=${n.authorname})}" frameborder="0" class="layadmin-iframe"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

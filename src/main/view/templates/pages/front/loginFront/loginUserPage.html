@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" media="all">
+</head>
+<body>
+<div class="layui-canvs"></div>
+<form class="layui-form" th:action="@{/pages/front/loginUser}" method="post">
+    <div class="layui-layout layui-layout-login">
+        <h1>
+            <strong>星漫画网站</strong>
+            <em>登录</em>
+        </h1>
+        <div class="layui-user-icon larry-login">
+            <input type="text" name="username" placeholder="用户名称" class="login_txtbx"/>
+        </div>
+        <div class="layui-pwd-icon larry-login">
+            <input type="password" name="password" placeholder="登录密码" class="login_txtbx"/>
+        </div>
+        <div class="layui-form-item">
+            <div style="text-align: center">
+                <div th:text="${errorMsg}" style="color: yellow;font-size: 15px"></div>
+            </div>
+        </div>
+        <div class="layui-submit larry-login">
+            <input type="submit" value="立即登陆" class="submit_btn"/>
+        </div>
+        <div class="layui-login-text">
+            <p>Copyright © 2021 星漫画网站 版权所有</p>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" th:src="@{/layui/layui.all.js}"></script>
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
+<script type="text/javascript" th:src="@{/js/jparticle.jquery.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".layui-canvs").jParticle({
+            background: "#141414",
+            color: "#E6E6E6"
+        });
+    });
+</script>
+</body>
+</html>

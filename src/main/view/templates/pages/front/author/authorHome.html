@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>作者主页</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" media="all">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" media="all">
+</head>
+<body>
+<section class="larry-wrapper">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <!-- 作者信息统计 -->
+            <section class="panel">
+                <header class="panel-heading bm0">
+                    <span class='span-title'>作者信息统计</span>
+                    <span class="tools pull-right"><a href="javascript:;" class="iconpx-chevron-down"></a></span>
+                </header>
+                <div class="panel-body laery-seo-box">
+                    <div class="larry-seo-stats" id="larry-seo-stats"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('larry-seo-stats'));
+    option = {
+        title : {
+            text: '作者上传漫画统计',
+            subtext: '',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['已上传漫画','待审核漫画','已通过漫画']
+        },
+        series : [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+                    {value:'[[${allCartoon}]]', name:'已上传漫画'},
+                    {value:'[[${notPassCartoon}]]', name:'待审核漫画'},
+                    {value:'[[${passCartoon}]]', name:'已通过漫画'}
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>

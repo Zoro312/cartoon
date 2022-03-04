@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>漫画阅读</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        img {
+            border: none;
+        }
+
+        body {
+            background: #ecfaff;
+        }
+
+        .box {
+            width: 800px;
+            height: 650px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto 0;
+            background: #ccc;
+        }
+
+        .box ol {
+            position: absolute;
+            left: 200px;
+            bottom: 5px;
+            z-index: 2;
+        }
+
+        .box ol li {
+            float: left;
+            margin-right: 3px;
+            display: inline;
+            cursor: pointer;
+            background: #fcf2cf;
+            border: 1px solid #f47500;
+            padding: 2px 6px;
+            color: #d94b01;
+            font-family: arial;
+            font-size: 12px;
+        }
+
+        .box .active {
+            padding: 3px 8px;
+            font-weight: bold;
+            color: #ffffff;
+            background: #ffb442;
+            position: relative;
+            bottom: 2px;
+        }
+
+        .box ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .box ul li {
+            width: 800px;
+            height: 650px;
+            float: left;
+        }
+
+        .box ul img {
+            float: left;
+            width: 800px;
+            height: 650px;
+        }
+
+        .box p {
+            width: 30px;
+            height: 30px;
+            line-height: 20px;
+            font-family: arial;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            background: #333;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 350px;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .box .prev {
+            left: 10px;
+        }
+
+        .box .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="slider" th:each="c:${session.cartoonChapter}">
+    <ul>
+        <script type="text/javascript">
+            var str="[[${c.chapterPath}]]";
+            function sp(str) {
+                var arr = str.split(',');
+                for (i=0;i<arr.length-1;i++){
+                    url ="/upload/"+arr[i];
+                    document.write('<li>'+'<img src="'+url+'" alt=""/>'+'</li>');
+                }
+            }
+            sp(str);
+        </script>
+    </ul>
+</div>
+<script type="text/javascript">
+    var Effect = (function () {
+        var Slider = function (o) {
+            this.setting = typeof o === 'object' ? o : {};
+            this.target = this.setting.target || 'slider';
+            this.showMarkers = this.setting.showMarkers || false;
+            this.showControls = this.setting.showControls || false;
+            this.ms = 35;
+            this.iTarget = 0;
+            this.nextTarget = 0;
+            this.speed = 0;
+            this.init();
+            this.handleEvent();
+        };
+        Slider.prototype = {
+            init: function () {
+                this.obj = document.getElementById(this.target);
+                this.oUl = this.obj.getElementsByTagName('ul')[0];
+                this.aUlLis = this.oUl.getElementsByTagName('li');
+                this.width = this.aUlLis[0].offsetWidth;
+                this.number = this.aUlLis.length;
+                this.oUl.style.width = this.width * this.number + 'px';
+                if (this.showMarkers) {
+                    var oDiv = document.createElement('div');
+                    var aLis = [];
+                    for (var i = 0; i < this.number; i++) {
+                        aLis.push('<li>' + (i + 1) + '<\/li>');
+                    }
+                    ;
+                    oDiv.innerHTML = '<ol>' + aLis.join('') + '<\/ol>';
+                    this.obj.appendChild(oDiv.firstChild);
+                    this.aLis = this.obj.getElementsByTagName('ol')[0].getElementsByTagName('li');
+                    this.aLis[0].className = 'active';
+                    oDiv = null;
+                }
+                ;
+                if (this.showControls) {
+                    this.oPrev = document.createElement('p');
+                    this.oNext = document.createElement('p');
+                    this.oPrev.className = 'prev';
+                    this.oPrev.innerHTML = '«';
+                    this.oNext.className = 'next';
+                    this.oNext.innerHTML = '»';
+                    this.obj.appendChild(this.oPrev);
+                    this.obj.appendChild(this.oNext);
+                }
+                ;
+            },
+            handleEvent: function () {
+                var that = this;
+                if (this.showMarkers) {
+                    for (var i = 0; i < this.number; i++) {
+                        var el = this.aLis[i];
+                        (function (index) {
+                            that.addEvent(el, 'mouseover', function () {
+                                that.goTime(index);
+                            });
+                        })(i);
+                    }
+                    ;
+                }
+                ;
+                if (this.showControls) {
+                    this.addEvent(this.oPrev, 'click', function () {
+                        that.fnPrev();
+                    });
+                    this.addEvent(this.oNext, 'click', function () {
+                        that.autoPlay();
+                    });
+                }
+                ;
+            },
+            addEvent: function (el, type, fn) {
+                if (window.addEventListener) {
+                    el.addEventListener(type, fn, false);
+                } else if (window.attachEvent) {
+                    el.attachEvent('on' + type, fn);
+                }
+                ;
+            },
+            fnPrev: function () {
+                this.nextTarget--;
+                if (this.nextTarget < 0) {
+                    this.nextTarget = this.number - 1;
+                }
+                ;
+                this.goTime(this.nextTarget);
+            },
+            autoPlay: function () {
+                this.nextTarget++;
+                if (this.nextTarget >= this.number) {
+                    this.nextTarget = 0;
+                }
+                ;
+                this.goTime(this.nextTarget);
+            },
+            goTime: function (index) {
+                var that = this;
+                if (this.showMarkers) {
+                    for (var i = 0; i < this.number; i++) {
+                        i == index ? this.aLis[i].className = 'active' : this.aLis[i].className = '';
+                    }
+                    ;
+                }
+                ;
+                this.iTarget = -index * this.width;
+                if (this.timer) {
+                    clearInterval(this.timer);
+                }
+                ;
+                this.timer = setInterval(function () {
+                        that.doMove(that.iTarget);
+                    },
+                    this.ms);
+            },
+            doMove: function (target) {
+                this.oUl.style.left = this.speed + 'px';
+                this.speed += (target - this.oUl.offsetLeft) / 3;
+                if (Math.abs(target - this.oUl.offsetLeft) === 0) {
+                    this.oUl.style.left = target + 'px';
+                    clearInterval(this.timer);
+                    this.timer = null;
+                }
+                ;
+            }
+        };
+        return {
+            slider: function (o) {
+                var tt = new Slider(o);
+            }
+        };
+    })();
+    //slide的切换效果，默认为"slide"（位移切换），可设置为'slide'（普通切换、默认）
+    Effect.slider({
+        'targetElement': 'slider',
+        'showMarkers': true,
+        'showControls': true
+    });
+</script>
+</body>
+</html>

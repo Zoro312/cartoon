@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>星漫画</title>
+
+    <link th:href="@{/css/allcss.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/comment-tvlist.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/comment.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/font/iconfont.css}">
+    <link th:href="@{/css/Common.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/channel.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/content.css}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+
+    <script th:src="@{/layui/layui.js}" th:inline="javascript"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script th:src="@{/js/sliderbox.js}"></script>
+    <script th:src="@{/js/tab.js}"></script>
+    <style>
+        .text-shenglue {
+            display: -webkit-box; /*将对象作为弹性伸缩盒子模型显示*/
+            -webkit-box-orient: vertical; /*设置或检索伸缩盒对象的子元素的排列方式*/
+            -webkit-line-clamp: 1; /*用来限制在一个块元素显示的文本的行数*/
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<!---------- 顶部页面 ---------->
+<div id="header">
+
+    <!-- 最顶端部分 -->
+    <div class="header-top">
+        <div class="auto-width">
+
+            <h1 class="logo fl"><a th:href="@{/}"><img src="/images/index/logo.png" width="160px" height="38px" alt="#"></a></h1>
+
+            <div class="search-box fl">
+                <form action="/">
+                    <input type="text" class="fl search-text" placeholder="请输入作品名称">
+                    <button class="fl search-btn">
+                        <i class="iconfont icon-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <ul class="header-guide fr">
+                <div class="guide-item login" th:if="${session.username == null}">
+                    <li class="guide-item login">
+                        <a th:href="@{/pages/front/loginUserPage}">登录</a>
+                    </li>
+                    <li class="guide-item login">
+                        <a th:href="@{/pages/front/registerUserPage}">注册</a>
+                    </li>
+                    <li class="guide-item login" th:if="${session.username == null}">
+                        <a>未登录</a>
+                    </li>
+
+                </div>
+                <div class="guide-item login" th:if="${session.username != null}">
+                    <li class="guide-item login">
+                        <a class="guide-item login" th:text="${session.username.username}"></a>
+                    </li>
+                    <li class="guide-item login">
+                        <a class="guide-item login" th:href="@{/logout}">注销</a>
+                    </li>
+                </div>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- 焦点图 -->
+    <div class="header-banner">
+        <a href="#" class="bg"><img class="bg" src="/images/index/title.jpg"></a>
+        <span class="text">欢迎来到星漫画网站</span>
+    </div>
+
+    <!-- 导航 -->
+    <div class="header-nav">
+        <div class="nav-wrap auto-width clearfix">
+            <a th:href="@{/}" class="nav-item">首页</a>
+            <a th:href="@{/pages/front/classify}" class="nav-item">分类</a>
+            <a th:href="@{/pages/front/ranking(ranking='')}" class="nav-item"><i class="iconfont icon-rank"></i>排行榜</a>
+            <a th:href="@{/pages/front/loginAuthor}" class="nav-item nav-item_hover">作者中心</a>
+            <a th:href="@{/pages/front/comment}" class="nav-item">漫评</a>
+        </div>
+    </div>
+</div>
+
+<!---------- 主体内容 ---------->
+<div id="main">
+    <div class="auto-width clearfix">
+
+
+        <div class="wrap w960" th:each="d:${session.cartoonDetails}">
+            <div class="maxBox">
+                <div class="box">
+                    <!--漫画详情-->
+                    <div class="video-box">
+                        <div class="d-title">
+                            <h2 th:text="${d.cartoonname}"></h2>
+                        </div>
+
+                        <div class="introduce">
+                            <div class="vod-img">
+                                <a href="">
+                                    <img th:src="${d.imagepath}" alt=""/>
+                                </a>
+                                <span class="imglogo">星漫画 在线阅读</span></div>
+                            <div class="vod-c">
+                                <div class="vod_bigc">
+                                    <div class="vod_l">
+                                        <div class="info">
+                                            <dl class="Actor">
+                                                <dt>作者：</dt>
+                                                <dd th:text="${d.cartoonAuthor}"></dd>
+                                            </dl>
+                                            <dl class="status">
+                                                <dt>状态：</dt>
+                                                <dd th:text="${d.state}"></dd>
+                                            </dl>
+                                            <dl class="Lang">
+                                                <dt>评分：</dt>
+                                                <dd th:text="${d.score}"></dd>
+                                            </dl>
+                                            <dl class="Type">
+                                                <dt>类型：</dt>
+                                                <dd style="text-overflow:ellipsis;">
+                                                    <a target="_blank" th:text="${d.regionType}"></a>
+                                                    <a target="_blank" th:text="${d.titleType}"></a>
+                                                </dd>
+                                            </dl>
+                                            <dl class="Intr">
+                                                <dt>简介：</dt>
+                                                <dd>
+                                                    <span th:text="${d.cartoonDesc}" class="text-shenglue"></span>
+                                                    <a href="#Introduce">详细剧情</a>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt5 mb5 adbg" id="ad_960_02"></div>
+            <a name="Introduce" id="Introduce"></a>
+            <!--章节列表-->
+            <div class="maxBox">
+                <div class="box Video-list">
+                    <div class="play-list b mb">
+                        <div class="title">
+                            <h3>
+                                <span class="p_tudou"></span>章节列表
+                                <span class="tips">（ 点击章节，即可阅读 ）</span>
+                            </h3>
+                        </div>
+                        <div id="play_1">
+                            <ul>
+                                <li th:each="c:${session.chaptersId}">
+                                    <a target="_blank" th:text="${c.chapterName}"
+                                       th:href="@{/cartoonChapter(cartoonid=${d.cartoonid},chapterid=${c.chapterid})}"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--漫画详情介绍-->
+            <div class="maxBox mb5">
+                <div class="box BigBox">
+                    <div class="title"><h3 th:text="《 +${d.cartoonname}+ 》+详情介绍"></h3></div>
+                    <div class="introduction">
+                        <p><font color=\"#e33680\"
+                                 th:text=" '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + ${d.cartoonDesc}">&nbsp;</font>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--漫画评论-->
+            <div class="maxBox mb5">
+                <div class="box BigBox">
+                    <div class="title"><h3 th:text="《 +${d.cartoonname}+ 》+评论："></h3></div>
+                    <div class="introduction">
+                        <form class="layui-form">
+                            <div class="layui-form-item layui-form-text">
+                                <div class="layui-input-block">
+                                    <textarea id="comment" name="comment" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item" style="display: none">
+                                <label class="layui-form-label">id</label>
+                                <div class="layui-input-inline" style="width: 200px">
+                                    <input type="hidden" name="cartoonid" class="layui-input" th:value="${d.cartoonid}"
+                                           lay-verify="required">
+                                </div>
+                            </div>
+                            <div class="layui-form-item" style="display: none" th:each="n:${session.username}">
+                                <label class="layui-form-label">用户名</label>
+                                <div class="layui-input-inline" style="width: 200px">
+                                    <input type="hidden" name="username" class="layui-input" th:value="${n.username}">
+                                </div>
+                            </div>
+                            <div class="layui-form-item" style="overflow: hidden;">
+                                <div class="layui-input-block layui-input-right" style="padding-left: 700px">
+                                    <span class="fl" th:if="${session.username == null}">
+                                        登录之后才能评论
+                                        <a class="layui-btn" th:href="@{/pages/front/loginUserPage}">登录</a>
+                                    </span>
+                                    <span class="fl" th:if="${session.username != null}">
+                                        <button class="layui-btn" lay-submit lay-filter="comment">发表</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="m-list-show">
+                        <div class="comments">
+                            <div class="comment-wrap" th:each="c:${comment}">
+                                <div class="comment-block">
+                                    <p class="comment-text" th:text="${c.comment}"
+                                       style="color: darkred; font-size: 20px"></p>
+                                    <div class="bottom-comment">
+                                        <div class="comment-date"
+                                             th:text="${#dates.format(c.timestamp,'YYYY-MM-dd hh:mm:ss')}"></div>
+                                        <ul class="comment-actions">
+                                            <a class="reply" style="color: black; font-size: 15px"
+                                               th:text="'点赞数:'+${c.likesum}"></a>
+                                            <a th:if="${session.username == null}"
+                                               th:href="@{/pages/front/loginUserPage}"
+                                               class="layui-icon layui-icon-praise"
+                                               style="font-size: 30px; color: red;"></a>
+                                            <a th:if="${session.username != null}"
+                                               th:href="@{/cartoonDetails/like(id=${c.id},userid=${session.username.userid},cartoonid=${session.cartoonDetails.cartoonid})}"
+                                               class="layui-icon layui-icon-praise"
+                                               style="font-size: 30px; color: red;"></a>
+
+                                            <a th:if="${session.username == null}"
+                                               th:href="@{/pages/front/loginUserPage}"
+                                               class="layui-icon layui-icon-tread"
+                                               style="font-size: 30px; color: black;"></a>
+                                            <a th:if="${session.username != null}"
+                                               th:href="@{/cartoonDetails/notLike(id=${c.id},userid=${session.username.userid},cartoonid=${session.cartoonDetails.cartoonid})}"
+                                               class="layui-icon layui-icon-tread"
+                                               style="font-size: 30px; color: black;"></a>
+                                            <li class="complain" th:text="${c.username}"
+                                                style="color: #01AAED; font-size: 15px"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------- 底部内容 ---------->
+<div id="footer">
+    <div class="container auto-width">
+        <div class="footer-top clearfix">
+            <div class="footer-bottom">
+                Copyright &copy; 2021.星漫画网站
+                <div onclick="window.location='/pages/back/loginPage'">
+                    <a target="_blank">后台登录</a>
+                </div>
+                <p>本站不提供任何视听上传服务，所有内容均来自视频分享站点所提供的公开引用资源。</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    $(function () {
+        layui.use(['form', 'layer'], function () {
+            const form = layui.form;
+            var layer = layui.layer;
+            form.render();
+            form.on('submit(comment)', function (data) {
+                let formData = new FormData(data.form);
+                $.ajax({
+                    url: '/userComment',
+                    contertType: false,
+                    data: formData,
+                    type: 'post',
+                    dataType: 'json',
+                    contentType: false,//这里
+                    processData: false,
+                    success: function (res) {
+                        if (res["res"] == true) {
+                            layer.msg("发表成功");
+                            $("#comment").val('');
+                        }
+                    },
+                    error: function () {
+                        layer.msg("发表失败");
+                    }
+                });
+                return false;
+            });
+        });
+    })
+</script>
+</body>
+</html>
